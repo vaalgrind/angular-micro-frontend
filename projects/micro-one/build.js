@@ -3,10 +3,10 @@ const concat = require('concat');
 
 (async function build() {
   const files = [
-    './dist/micro-one/runtime.js',
-    './dist/micro-one/polyfills.js',
+    './dist/micro-one/runtime-es2015.js',
+    './dist/micro-one/polyfills-es2015.js',
     // './dist/micro-one/scripts.js',
-    './dist/micro-one/main.js'
+    './dist/micro-one/main-es2015.js'
   ];
 
   await fs.ensureDir('src/elements');
