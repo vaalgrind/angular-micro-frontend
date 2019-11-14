@@ -10,7 +10,7 @@ export class AppComponent {
   title = 'micro-front';
   choosenMicro = null;
 
-  @ViewChild('divRef') divRef;
+  @ViewChild('divRef', { static: true }) divRef;
   constructor(private sanitizer: DomSanitizer) {
   }
 
