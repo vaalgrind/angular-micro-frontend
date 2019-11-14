@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { SafeHtml, DomSanitizer } from '@angular/platform-browser';
 
 @Component({
@@ -8,43 +8,59 @@ import { SafeHtml, DomSanitizer } from '@angular/platform-browser';
 })
 export class AppComponent {
   title = 'micro-front';
+  choosenMicro = null;
 
-  toShow: SafeHtml = '';
-
+  @ViewChild('divRef') divRef;
   constructor(private sanitizer: DomSanitizer) {
   }
 
-  private loadScript(url: string): void {
-    if (document.querySelectorAll(`script[src='${url}']`).length === 0) {
-      const script = document.createElement('script');
-      script.onload = function () {
-          // do stuff with the script
-      };
-      script.src = url;
-      document.head.appendChild(script);
-    }
+  loadScript(name: string) {
+    return new Promise((resolve, reject) => {
+      // resolve if already loaded
+      if (document.querySelectorAll(`script[src='${name}']`).length !== 0) {
+        resolve({ script: name, loaded: true, status: 'Already Loaded' });
+      } else {
+        // load script
+        const script: any = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = name;
+        // cross browser handling of onLoaded event
+        if (script.readyState) {  // IE
+          script.onreadystatechange = () => {
+            if (script.readyState === 'loaded' || script.readyState === 'complete') {
+              script.onreadystatechange = null;
+              resolve({ script: name, loaded: true, status: 'Loaded' });
+            }
+          };
+        } else {  // Others
+          script.onload = () => {
+            resolve({ script: name, loaded: true, status: 'Loaded' });
+          };
+        }
+        script.onerror = (error: any) => resolve({ script: name, loaded: false, status: 'Loaded' });
+        // finally append the script tag in the DOM
+        document.getElementsByTagName('head')[0].appendChild(script);
+      }
+    });
   }
 
   public toggleMicroOne() {
-    // if (!this.toShow) {
-      this.loadScript('elements/micro-one.js');
-      this.toShow = this.sanitizer.bypassSecurityTrustHtml(`<micro-one>
-      <div class="loader-05"></div>
-      </micro-one>`);
-    // } else {
-    //   this.toShow = '';
-    // }
+     this.loadScript('elements/micro-one.js').then((info) => {
+      for (let i = 0; i < this.divRef.nativeElement.children.length; i++) {
+        this.divRef.nativeElement.children[i].remove();
+      }
+      const microone = document.createElement('micro-one') as any;
+      microone.test = 'Hello, world!';
+      //microone.service = this.dummyService;  // <-- ERROR: TypeScript knows this should be a string.
+      //microone.data = this.data;
+      this.divRef.nativeElement.appendChild(microone);
+      this.choosenMicro = 'one';
+      setTimeout(_ => microone.test = 'jeden', 2000);
+    });
   }
 
   public toggleMicroTwo() {
-    // if (!this.toShow) {
-      this.loadScript('elements/micro-two.js');
-      this.toShow = this.sanitizer.bypassSecurityTrustHtml(`<micro-two>
-      <div class="loader-05"></div>
-      </micro-two>`);
-    // } else {
-    //   this.toShow = '';
-    // }
+   
   }
 
 }
