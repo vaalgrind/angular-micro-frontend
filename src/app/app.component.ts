@@ -1,6 +1,7 @@
 import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { SafeHtml, DomSanitizer } from '@angular/platform-browser';
 import { coerceNumberProperty } from '@angular/cdk/coercion';
+import { SharedService } from 'projects/micro-one/src/app/shared.service';
 
 @Component({
   selector: 'app-root',
@@ -28,8 +29,9 @@ export class AppComponent {
   }
   private _tickInterval = 1;
   @ViewChild('divRef', { static: true }) divRef;
-  constructor(private sanitizer: DomSanitizer) {
+  constructor(private sanitizer: DomSanitizer, private sharedService: SharedService) {
     console.log(window)
+    console.log(this.sharedService)
   }
 
   loadScript(name: string) {
@@ -63,7 +65,7 @@ export class AppComponent {
   }
 
   public toggleMicroOne() {
-     this.loadScript('elements/micro-one.js').then((info) => {
+    this.loadScript('elements/micro-one.js').then((info) => {
       for (let i = 0; i < this.divRef.nativeElement.children.length; i++) {
         this.divRef.nativeElement.children[i].remove();
       }
@@ -73,13 +75,20 @@ export class AppComponent {
       //microone.data = this.data;
       this.divRef.nativeElement.appendChild(microone);
       this.choosenMicro = 'one';
+
+      const button = document.createElement('button-el') as any;
+      //microone.service = this.dummyService;  // <-- ERROR: TypeScript knows this should be a string.
+      //microone.data = this.data;
+      this.divRef.nativeElement.appendChild(button);
+      this.choosenMicro = 'one';
       console.log(window['ng']);
-      setTimeout(_ => microone.test = 'jeden', 2000);
+      console.log(this.sharedService);
+      this.sharedService.sharedVar$.next('jeden')
     });
   }
 
   public toggleMicroTwo() {
-   
+
   }
 
 }

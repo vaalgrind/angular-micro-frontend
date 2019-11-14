@@ -3,12 +3,20 @@ import {coerceNumberProperty} from '@angular/cdk/coercion';
 import { Observable } from 'rxjs';
 import { of } from 'rxjs';
 import { first } from 'rxjs/operators';
+import { SharedService } from './shared.service';
 @Component({
   selector: 'app-micro-one',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  constructor(private sharedService: SharedService){
+    this.sharedService.sharedVar$.subscribe(el =>{
+      console.log(el);
+      this.title = el;
+    })
+  }
   observable: Observable<any> = new Observable();
   title = 'Micro-one-1';
   autoTicks = false;
