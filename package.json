@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod",
     "build:elements": "npm run build:micro-one && npm run build:micro-two",
     "build:micro-one": "ng build  micro-one --prod --optimization --output-hashing none && node ./projects/micro-one/build.js ",
     "build:micro-two": "ng build  micro-two --prod --output-hashing none && node ./projects/micro-two/build.js",

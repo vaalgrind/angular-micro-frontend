@@ -3,7 +3,7 @@ const concat = require('concat');
 
 (async function build() {
   const files = [
-    './dist/micro-two/runtime.js',
+    //'./dist/micro-two/runtime.js',
     './dist/micro-two/polyfills.js',
     // './dist/micro-one/scripts.js',
     './dist/micro-two/main.js'

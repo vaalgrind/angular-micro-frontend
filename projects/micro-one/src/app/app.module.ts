@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { MatSliderModule } from '@angular/material/slider';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
-import {MatInputModule} from '@angular/material/input';
 @NgModule({
   declarations: [
     AppComponent
@@ -16,7 +15,6 @@ import {MatInputModule} from '@angular/material/input';
     BrowserModule,
     MatSliderModule,
     MatCardModule,
-    MatInputModule,
   ],
   providers: [],
   entryComponents: [AppComponent]

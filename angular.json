@@ -42,7 +42,34 @@
               "node_modules/@angular/compiler/bundles/compiler.umd.js",
               "node_modules/@angular/elements/bundles/elements.umd.js",
               "node_modules/@angular/platform-browser/bundles/platform-browser.umd.js",
-              "node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js"
+              "node_modules/@angular/animations/bundles/animations.umd.js",
+              "node_modules/@angular/animations/bundles/animations-browser.umd.js",
+              "node_modules/@angular/forms/bundles/forms.umd.min.js",
+              "node_modules/@angular/platform-browser/bundles/platform-browser-animations.umd.js",
+              "node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js",
+              "node_modules/@angular/cdk/bundles/cdk.umd.min.js",
+              "node_modules/@angular/cdk/bundles/cdk-bidi.umd.min.js",
+              "node_modules/@angular/cdk/bundles/cdk-accordion.umd.min.js",
+              "node_modules/@angular/cdk/bundles/cdk-collections.umd.min.js",
+
+              
+              "node_modules/@angular/cdk/bundles/cdk-platform.umd.min.js",
+              "node_modules/@angular/cdk/bundles/cdk-observers.umd.min.js",
+              "node_modules/@angular/cdk/bundles/cdk-a11y.umd.min.js",
+              "node_modules/@angular/cdk/bundles/cdk-keycodes.umd.min.js",
+              "node_modules/@angular/cdk/bundles/cdk-text-field.umd.min.js",
+
+              "node_modules/@angular/cdk/bundles/cdk-portal.umd.min.js",
+              "node_modules/@angular/cdk/bundles/cdk-scrolling.umd.min.js",
+              "node_modules/@angular/cdk/bundles/cdk-overlay.umd.min.js",
+              "node_modules/@angular/cdk/bundles/cdk-coercion.umd.min.js",
+              "node_modules/@angular/cdk/bundles/cdk-stepper.umd.min.js",
+              "node_modules/@angular/cdk/bundles/cdk-table.umd.js",
+              "node_modules/@angular/cdk/bundles/cdk-tree.umd.js",
+              "node_modules/@angular/material/bundles/material.umd.js",
+              "node_modules/@angular/material/bundles/material-core.umd.js",
+              "node_modules/@angular/material/bundles/material-card.umd.js"
+             
             ]
           },
           "configurations": {

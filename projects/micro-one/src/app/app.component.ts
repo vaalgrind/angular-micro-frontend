@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
 import {coerceNumberProperty} from '@angular/cdk/coercion';
+import { Observable } from 'rxjs';
+import { of } from 'rxjs';
+import { first } from 'rxjs/operators';
 @Component({
   selector: 'app-micro-one',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  observable: Observable<any> = new Observable();
   title = 'Micro-one-1';
   autoTicks = false;
   disabled = false;
@@ -24,4 +28,7 @@ export class AppComponent {
     this._tickInterval = coerceNumberProperty(value);
   }
   private _tickInterval = 1;
+  private ontest(){
+    of('x');
+  }
 }
