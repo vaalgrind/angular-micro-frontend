@@ -12,6 +12,7 @@ export class AppComponent {
 
   @ViewChild('divRef', { static: true }) divRef;
   constructor(private sanitizer: DomSanitizer) {
+    console.log(window)
   }
 
   loadScript(name: string) {
@@ -55,6 +56,7 @@ export class AppComponent {
       //microone.data = this.data;
       this.divRef.nativeElement.appendChild(microone);
       this.choosenMicro = 'one';
+      console.log(window['ng']);
       setTimeout(_ => microone.test = 'jeden', 2000);
     });
   }
