@@ -6,12 +6,14 @@
     "start": "ng serve",
     "build": "ng build",
     "build:elements": "npm run build:micro-one && npm run build:micro-two",
-    "build:micro-one": "ng build  micro-one --prod --output-hashing none && node ./projects/micro-one/build.js ",
+    "build:micro-one": "ng build  micro-one --prod --optimization --output-hashing none && node ./projects/micro-one/build.js ",
     "build:micro-two": "ng build  micro-two --prod --output-hashing none && node ./projects/micro-two/build.js",
     "deploy": "npm run build:micro-one && ng serve",
+    "deploy-externals": "npm run build:micro-one:externals && ng serve",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build:micro-one:externals": "ng build --extra-webpack-config projects/micro-one/webpack.externals.js --prod --project micro-one --single-bundle --output-hashing none && node ./projects/micro-one/build.js"
   },
   "private": true,
   "dependencies": {
